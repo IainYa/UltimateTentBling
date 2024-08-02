@@ -1,0 +1,44 @@
+{
+	"build": {
+		"core": "stm32",
+		"cpu": "cortex-m3",
+		"extra_flags": "-DSTM32F100xB -DSTM32F1",
+		"f_cpu": "24000000L",
+		"mcu": "stm32f100c8t6",
+		"product_line": "STM32F100xB",
+		"variant": "STM32F1xx/F100C(8-B)T"
+	},
+	"debug": {
+		"default_tools": [
+			"stlink"
+		],
+		"jlink_device": "STM32F100C8",
+		"onboard_tools": [
+			"stlink"
+		],
+		"openocd_target": "stm32f1x",
+		"svd_path": "STM32F100xx.svd"
+	},
+	"frameworks": [
+		"stm32cube",
+		"arduino",
+		"cmsis",
+		"mbed",
+		"libopencm3"
+	],
+	"name": "STM32F100C8 (8k RAM. 64k Flash)",
+	"upload": {
+		"maximum_ram_size": 8192,
+		"maximum_size": 65536,
+		"protocol": "stlink",
+		"protocols": [
+			"jlink",
+			"stlink",
+			"blackmagic",
+			"serial",
+			"cmsis-dap"
+		]
+	},
+	"url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f100c8.html",
+	"vendor": "ST"
+}
