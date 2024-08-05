@@ -1,6 +1,11 @@
 #include <string>
 #include <SPI.h>
-#include <vaisala_rs41.h>
+#include <hardwareConfig.h>
+#include <UltimateTentBling.h>
+
+//#include <vaisala_rs41.h>
+
+
 
 std::string gps = "", val = "";
 int timePart, latPart, lonPart;
@@ -11,27 +16,14 @@ void parseGPS();
 void updateSchedule();
 
 void setup() {
-  uint16_t leitura;   
-  rs41_config_pinos_io(); 
-  rs41_green_led (0);
-  rs41_red_led (0); 
+  setupPins();
+  status_green_led(0);
+  status_red_led(0); 
   
   Serial1.begin(9600); //GPS
   Serial3.begin(9600); 
 
-  //rs41_reset_gps ();
-  
-  radio_soft_reset();
-  
-  // configura frequencia de TX  
-  radio_set_tx_frequency(403.0);
-  
-  //configura potencia de TX 
-  radio_set_tx_power(1);
-     
-  radio_config_sensor_temp();  
-  
-  radio_enable_tx(); 
+  reset_gps();
    
   delay(1000);  
 }
@@ -125,8 +117,8 @@ void parseGPS()
 
   if(fixed.compare("1") == 0)
   {
-    rs41_green_led(1);
-    rs41_red_led(0);
+    status_green_led(1);
+    status_red_led(0);
     start = 2;
     len = tim.find(".", start) - start;
     timePart = stoi(tim.substr(start, len));
@@ -154,14 +146,14 @@ void parseGPS()
     if (latPart != latPartNew || lonPart != lonPartNew)
     {
       locChanged = 1;
-      rs41_red_led(1);
+      status_red_led(1);
       latPart = latPartNew;
       lonPart = lonPartNew;
     }
   }
   else{
-    rs41_green_led(0);
-    rs41_red_led(1);
+    status_green_led(0);
+    status_red_led(1);
   }
 
 }
@@ -171,5 +163,5 @@ void updateSchedule()
 {
   for(int i=0; i<10000000; i++)
   {}
-  rs41_red_led(0);
+  status_red_led(0);
 }
