@@ -18,14 +18,16 @@ The patterns are on a fixed schedule, based on UTC time and the GPS coordinates.
 Each pattern starts every 60 seconds and if it's a moving transition, it will take one hour to get to the other side of 0.5 degree area.  This works out approximately 15m/s.
 
 ### Transitions
-- Instant change for all tents
-- North to South
-- South to North
-- East to West
-- West to East
-- Random delay
+- 0 - Instant change for all tents
+- 1 - North to South
+- 2 - South to North
+- 3 - East to West
+- 4 - West to East
 
 ### Effects
+- 0 - 2 Colour Pattern
+- 1 - Rainbow
+
 
 #### Individual tent effects
 - Single - Single colour
@@ -34,9 +36,6 @@ Each pattern starts every 60 seconds and if it's a moving transition, it will ta
 - Random strobe - Strobing a single colour at a random interval.  Globally, this should look like a twinkling or shimmering pattern.
 - Rainbow - Scrolling through rainbow colours.  Globally, this should look like a continuous rainbow moving across the site.
   
-#### Local effects
-- Disco Squares - Red, Yellow, Green and Blue squares (approx 20m?), changing to a different colour each second.
-
 
 ## Setup
 
@@ -53,7 +52,7 @@ Each pattern starts every 60 seconds and if it's a moving transition, it will ta
   - Tent Effect
   - Colour 1
   - Colour 2
-  - Parameter 1 - e.g. fade time to get to get to next colour (ms)
-  - Parameter 2 - e.g. time between pulses (ms)
-
-
+  - Parameter 1 - e.g. delay time for Colour 1
+  - Parameter 2 - e.g. fade time for Colour 1
+  - Parameter 3 - e.g. delay time for Colour 2
+  - Parameter 4 - e.g. fade time for Colour 2
